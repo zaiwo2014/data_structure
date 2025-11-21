@@ -43,13 +43,20 @@ dyn dyn_expansion(dyn dyn_arr) {
     return new_dyn_arr;
 }
 
-void insert_into_dyn(dyn* dyn_arr,int element) {
+void insert_into_dyn(dyn *dyn_arr,int element) {
     if (dyn_arr->size == dyn_arr->capacity) {
         *dyn_arr = dyn_expansion(*dyn_arr);
     }
-
     dyn_arr->arr[dyn_arr->size] = element;
     dyn_arr->size++;
+}
+
+void query_dyn_by_index(dyn dyn_arr, int index) {
+    printf("%d\n", dyn_arr.arr[index]);
+}
+
+void modify_dyn(dyn dyn_arr, int index, int num) {
+    dyn_arr.arr[index] = num;
 }
 
 
@@ -57,12 +64,9 @@ void insert_into_dyn(dyn* dyn_arr,int element) {
 int main(void) {
     //定义一个数组
     dyn dyn_arr = init_dyn_arr((int[]){1,2,3,4,5}, 5);
-    for (int i = 10; i < 50; i++) {
-        insert_into_dyn(&dyn_arr, i);
-    }
+    modify_dyn(dyn_arr, 3, 1);
     print_dyn_arr(dyn_arr);
     free(dyn_arr.arr);
     return 0;
-    //动态扩容算法
 }
 
