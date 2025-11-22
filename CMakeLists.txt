@@ -3,3 +3,5 @@ project(data_structure C)
 
 set(CMAKE_C_STANDARD 11)
 
+add_executable(new_target pointer/demo.c
+        algorithm/binary_search.c)
